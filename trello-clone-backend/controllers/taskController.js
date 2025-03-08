@@ -1,24 +1,36 @@
-const Task = require("../models/Task");
-
-exports.getTasks = async (req, res) => {
-  const tasks = await Task.find({ createdBy: req.user.id });
-  res.json(tasks);
-};
+const Task = require('../models/Task');
 
 exports.createTask = async (req, res) => {
-  const { title, description, status, assignedTo } = req.body;
-  const newTask = new Task({ title, description, status, assignedTo, createdBy: req.user.id });
-
-  await newTask.save();
-  res.status(201).json(newTask);
+  const { title, boardId, listId } = req.body;
+  try {
+    const task = await Task.create({ title, board: boardId, list: listId, assignees: [req.user.id] });
+    res.status(201).json(task);
+  } catch (error) {
+    res.status(500).json({ message: 'Server error', error });
+  }
 };
 
 exports.updateTask = async (req, res) => {
-  const updatedTask = await Task.findByIdAndUpdate(req.params.id, req.body, { new: true });
-  res.json(updatedTask);
+  const { taskId } = req.params;
+  const { status, listId, position, assignees } = req.body;
+  try {
+    const task = await Task.findByIdAndUpdate(
+      taskId,
+      { status, list: listId, position, assignees },
+      { new: true }
+    );
+    res.json(task);
+  } catch (error) {
+    res.status(500).json({ message: 'Server error', error });
+  }
 };
 
-exports.deleteTask = async (req, res) => {
-  await Task.findByIdAndDelete(req.params.id);
-  res.json({ message: "Task deleted" });
+exports.getTasksByBoard = async (req, res) => {
+  const { boardId } = req.params;
+  try {
+    const tasks = await Task.find({ board: boardId }).populate('assignees', 'name email');
+    res.json(tasks);
+  } catch (error) {
+    res.status(500).json({ message: 'Server error', error });
+  }
 };
