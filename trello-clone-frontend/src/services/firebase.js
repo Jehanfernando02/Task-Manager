@@ -13,6 +13,6 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-const googleProvider = new GoogleAuthProvider(); // Make sure this exists
+const googleProvider = new GoogleAuthProvider();
 
-export { auth, googleProvider }; // Ensure googleProvider is exported
+export { auth, googleProvider, signInWithPopup, signOut };

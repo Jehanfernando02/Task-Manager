@@ -1,0 +1,30 @@
+.task {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+    padding: 0.75rem;
+    margin-bottom: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: background 0.3s ease;
+  }
+  
+  .task:hover {
+    background: rgba(243, 244, 246, 0.9);
+  }
+  
+  .task-title {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #1F2937;
+  }
+  
+  .task-status {
+    font-size: 0.875rem;
+    color: #6B7280;
+  }
+  
+  .task-assignees {
+    font-size: 0.75rem;
+    color: #9CA3AF;
+  }
