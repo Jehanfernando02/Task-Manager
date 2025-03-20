@@ -1,19 +1,19 @@
-import { useState } from 'react'
+import { useState } from 'react';
 
 function BoardHeader({ onAddList }) {
-  const [listTitle, setListTitle] = useState('')
+  const [listTitle, setListTitle] = useState('');
 
   const handleSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     if (listTitle.trim()) {
-      onAddList(listTitle)
-      setListTitle('')
+      onAddList(listTitle);
+      setListTitle('');
     }
-  }
+  };
 
   return (
     <div className="mb-6">
-      <form onSubmit={handleSubmit} className="flex items-center space-x-4">
+      <form onSubmit={handleSubmit} className="flex space-x-4">
         <input
           type="text"
           value={listTitle}
@@ -25,11 +25,11 @@ function BoardHeader({ onAddList }) {
           type="submit"
           className="bg-primary text-white px-4 py-2 rounded hover:bg-blue-600"
         >
-          Add List
+          Add
         </button>
       </form>
     </div>
-  )
+  );
 }
 
-export default BoardHeader
+export default BoardHeader;

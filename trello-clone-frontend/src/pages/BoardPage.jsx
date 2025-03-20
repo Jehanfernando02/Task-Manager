@@ -1,7 +1,7 @@
-import Board from '../components/Board/Board'
+import Board from '../components/Board/Board';
 
 function BoardPage() {
-  return <Board />
+  return <Board />;
 }
 
-export default BoardPage
+export default BoardPage;

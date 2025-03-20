@@ -1,7 +1,7 @@
-import { configureStore } from '@reduxjs/toolkit'
-import authSlice from './slices/authSlice'
-import boardSlice from './slices/boardSlice'
-import taskSlice from './slices/taskSlice'
+import { configureStore } from '@reduxjs/toolkit';
+import authSlice from './slices/authSlice';
+import boardSlice from './slices/boardSlice';
+import taskSlice from './slices/taskSlice';
 
 export default configureStore({
   reducer: {
@@ -9,4 +9,4 @@ export default configureStore({
     boards: boardSlice,
     tasks: taskSlice,
   },
-})
+});
