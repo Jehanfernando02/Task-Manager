@@ -14,7 +14,7 @@ function TaskCard({ task }) {
         dispatch(
           updateTaskPosition({
             taskId: item.id,
-            data: { listId: dropResult.listId },
+            data: { list: dropResult.listId },
           })
         );
       }
@@ -27,9 +27,9 @@ function TaskCard({ task }) {
   return (
     <div
       ref={drag}
-      className={`bg-white dark:bg-gray-800 p-3 rounded shadow ${isDragging ? 'opacity-50' : ''}`}
+      className={`bg-gray-50 dark:bg-gray-700 p-3 rounded-lg shadow-sm hover:shadow-md transition-all duration-200 cursor-move ${isDragging ? 'opacity-50' : ''}`}
     >
-      <h4>{task.title}</h4>
+      <h4 className="text-sm font-medium text-gray-900 dark:text-white">{task.title}</h4>
     </div>
   );
 }

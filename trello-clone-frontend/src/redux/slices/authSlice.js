@@ -4,8 +4,10 @@ import { loginUser } from '../../api/api';
 export const login = createAsyncThunk('auth/login', async (idToken, { rejectWithValue }) => {
   try {
     const response = await loginUser(idToken);
+    console.log('Login response:', response.data);
     return response.data;
   } catch (error) {
+    console.error('Login error:', error.response?.data || error.message);
     return rejectWithValue(error.response?.data || error.message);
   }
 });
@@ -29,6 +31,7 @@ const authSlice = createSlice({
     builder
       .addCase(login.pending, (state) => {
         state.loading = true;
+        state.error = null;
       })
       .addCase(login.fulfilled, (state, action) => {
         state.loading = false;

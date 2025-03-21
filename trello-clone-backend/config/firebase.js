@@ -1,8 +1,10 @@
-const admin = require('firebase-admin');
-const serviceAccount = require('../serviceAccountKey.json'); 
+const admin = require("firebase-admin");
 
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-});
+// Check if Firebase app is already initialized
+if (!admin.apps.length) {
+  admin.initializeApp();
+} else {
+  admin.app(); // Use the existing app
+}
 
 module.exports = admin;

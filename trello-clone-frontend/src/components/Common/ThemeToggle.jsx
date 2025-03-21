@@ -7,9 +7,9 @@ function ThemeToggle() {
   return (
     <button
       onClick={toggleTheme}
-      className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-black dark:text-white"
+      className="p-2 rounded-full bg-white dark:bg-gray-800 text-primary dark:text-accent hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200 shadow-sm"
     >
-      {isDark ? <FaSun /> : <FaMoon />}
+      {isDark ? <FaSun size={20} /> : <FaMoon size={20} />}
     </button>
   );
 }

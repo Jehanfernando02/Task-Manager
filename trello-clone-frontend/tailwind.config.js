@@ -6,8 +6,15 @@ export default {
     extend: {
       colors: {
         primary: '#0079BF',
-        secondary: '#EBECF0',
-        darkBg: '#1A1A1A',
+        secondary: '#F4F5F7',
+        darkBg: '#1F2937',
+        accent: '#34D399',
+      },
+      fontFamily: {
+        sans: ['Inter', 'sans-serif'],
+      },
+      boxShadow: {
+        'lg': '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
       },
     },
   },

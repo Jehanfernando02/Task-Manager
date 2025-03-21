@@ -24,10 +24,10 @@ function List({ list, tasks, onAddTask }) {
   return (
     <div
       ref={drop}
-      className={`w-64 bg-gray-100 dark:bg-gray-700 p-4 rounded-lg ${isOver ? 'bg-gray-200' : ''}`}
+      className={`w-72 bg-white dark:bg-gray-800 p-4 rounded-xl shadow-lg ${isOver ? 'ring-2 ring-accent' : ''} transition-all duration-200`}
     >
-      <h3 className="font-bold mb-4">{list.title}</h3>
-      <div className="space-y-2">
+      <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">{list.title}</h3>
+      <div className="space-y-3">
         {tasks.map((task) => (
           <TaskCard key={task._id} task={task} />
         ))}
@@ -38,13 +38,13 @@ function List({ list, tasks, onAddTask }) {
           value={taskTitle}
           onChange={(e) => setTaskTitle(e.target.value)}
           placeholder="Add a task..."
-          className="w-full p-2 rounded border dark:bg-gray-600 dark:text-white"
+          className="w-full p-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent"
         />
         <button
           type="submit"
-          className="mt-2 w-full bg-primary text-white py-1 rounded hover:bg-blue-600"
+          className="mt-2 w-full bg-primary text-white py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200 shadow-sm"
         >
-          Add
+          Add Task
         </button>
       </form>
     </div>

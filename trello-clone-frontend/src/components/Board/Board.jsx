@@ -7,7 +7,7 @@ import BoardHeader from './BoardHeader';
 import List from './List';
 
 function Board() {
-  const { boardId } = use用的Params();
+  const { boardId } = useParams();
   const dispatch = useDispatch();
   const { tasks } = useSelector((state) => state.tasks);
   const [lists, setLists] = useState([]);
@@ -17,8 +17,12 @@ function Board() {
   }, [dispatch, boardId]);
 
   const handleAddList = async (title) => {
-    const response = await createList(title, boardId);
-    setLists([...lists, response.data]);
+    try {
+      const response = await createList(title, boardId);
+      setLists([...lists, response.data]);
+    } catch (error) {
+      console.error('Add list error:', error);
+    }
   };
 
   const handleAddTask = (title, listId) => {
@@ -26,17 +30,21 @@ function Board() {
   };
 
   return (
-    <div className="p-6">
+    <div className="container mx-auto px-4 py-8 bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 min-h-screen">
       <BoardHeader onAddList={handleAddList} />
-      <div className="flex space-x-4 overflow-x-auto">
-        {lists.map((list) => (
-          <List
-            key={list._id}
-            list={list}
-            tasks={tasks.filter((task) => task.list === list._id)}
-            onAddTask={handleAddTask}
-          />
-        ))}
+      <div className="flex space-x-6 overflow-x-auto py-4">
+        {lists.length === 0 ? (
+          <p className="text-gray-600 dark:text-gray-300">No lists yet. Add one!</p>
+        ) : (
+          lists.map((list) => (
+            <List
+              key={list._id}
+              list={list}
+              tasks={tasks.filter((task) => task.list === list._id)}
+              onAddTask={handleAddTask}
+            />
+          ))
+        )}
       </div>
     </div>
   );

@@ -12,20 +12,20 @@ function BoardHeader({ onAddList }) {
   };
 
   return (
-    <div className="mb-6">
-      <form onSubmit={handleSubmit} className="flex space-x-4">
+    <div className="mb-8">
+      <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4">
         <input
           type="text"
           value={listTitle}
           onChange={(e) => setListTitle(e.target.value)}
-          placeholder="Add a list..."
-          className="flex-1 p-2 rounded border dark:bg-gray-700 dark:text-white"
+          placeholder="Add a new list..."
+          className="flex-1 p-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent shadow-sm"
         />
         <button
           type="submit"
-          className="bg-primary text-white px-4 py-2 rounded hover:bg-blue-600"
+          className="bg-primary text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors duration-200 shadow-md"
         >
-          Add
+          Add List
         </button>
       </form>
     </div>

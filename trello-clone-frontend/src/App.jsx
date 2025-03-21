@@ -3,27 +3,20 @@ import { ThemeProvider } from './context/ThemeContext';
 import Navbar from './components/Common/Navbar';
 import Home from './pages/Home';
 import BoardPage from './pages/BoardPage';
-import ProtectedRoute from './components/Auth/ProtectedRoute';
+import Login from './components/Auth/Login'; // Import Login explicitly
 
 function App() {
-  console.log('App.jsx: Rendering');
   return (
     <ThemeProvider>
       <BrowserRouter>
         <div className="min-h-screen bg-secondary dark:bg-darkBg">
           <Navbar />
-          <main className="p-4">
+          <main className="pt-20">
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route
-                path="/board/:boardId"
-                element={
-                  <ProtectedRoute>
-                    <BoardPage />
-                  </ProtectedRoute>
-                }
-              />
-              <Route path="*" element={<div>404 - Page Not Found</div>} />
+              <Route path="/login" element={<Login />} /> {/* Explicit login route */}
+              <Route path="/board/:boardId" element={<BoardPage />} />
+              <Route path="*" element={<div className="text-center mt-20 text-2xl text-gray-600 dark:text-gray-300">404 - Page Not Found</div>} />
             </Routes>
           </main>
         </div>
